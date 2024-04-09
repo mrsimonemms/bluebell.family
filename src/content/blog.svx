@@ -1,0 +1,10 @@
+<script lang="ts">
+	import type { PageServerData } from '../routes/[...slug]/$types';
+
+	export let data: PageServerData;
+</script>
+
+blog list hello
+
+{data.content.content.slug}
+{JSON.stringify(data.children)}
