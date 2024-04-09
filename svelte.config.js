@@ -16,8 +16,17 @@
 
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
+import { globSync as glob } from 'glob';
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
+
+const content = glob('./src/content/**/*.md');
+const entries = content.map((item) =>
+	item
+		.replace(/^src\/content\//, '/')
+		.replace(/\.md$/, '')
+		.replace('index', ''),
+);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -41,7 +50,12 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter({
 			fallback: '404.html',
+			strict: true,
 		}),
+
+		prerender: {
+			entries,
+		},
 	},
 };
 

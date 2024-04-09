@@ -14,14 +14,29 @@
  * limitations under the License.
  */
 
-import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+export interface Content extends MarkdownMetadata {
+	date: string;
+	excerpt?: string;
+	image: string;
+	slug: string;
+	tags: string[];
+	subtitle?: string;
+	title: string;
+}
 
-const layoutsPath = './src/layouts';
+export interface MarkdownHeading {
+	title: string;
+	slug: string;
+	level: number;
+	children: MarkdownHeading[];
+}
 
-export default defineConfig({
-	extensions: ['.svelte.md', '.md', '.svx'],
-	layout: {
-		home: `${layoutsPath}/home.svelte`,
-		_: `${layoutsPath}/default.svelte`,
-	},
-});
+export interface MarkdownMetadata {
+	headings: MarkdownHeading[];
+}
+
+export interface MdsvexImport<T extends MarkdownMetadata = MarkdownMetadata> {
+	// Technically not correct but needed to make language-tools happy
+	default: ConstructorOfATypedSvelteComponent;
+	metadata: T;
+}

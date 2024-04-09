@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+import { fetch, fetchChildren } from '$lib/content';
+import type { PageLoad } from './$types';
 
-const layoutsPath = './src/layouts';
-
-export default defineConfig({
-	extensions: ['.svelte.md', '.md', '.svx'],
-	layout: {
-		home: `${layoutsPath}/home.svelte`,
-		_: `${layoutsPath}/default.svelte`,
-	},
+export const load: PageLoad = async ({ params }) => ({
+	content: await fetch(params.slug),
+	children: await fetchChildren(params.slug),
 });

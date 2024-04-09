@@ -14,14 +14,6 @@
  * limitations under the License.
  */
 
-import { defineMDSveXConfig as defineConfig } from 'mdsvex';
-
-const layoutsPath = './src/layouts';
-
-export default defineConfig({
-	extensions: ['.svelte.md', '.md', '.svx'],
-	layout: {
-		home: `${layoutsPath}/home.svelte`,
-		_: `${layoutsPath}/default.svelte`,
-	},
-});
+export const prerender = true;
+export const ssr = true;
+export const trailingSlash = 'always';
