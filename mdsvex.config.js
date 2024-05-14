@@ -14,14 +14,30 @@
  * limitations under the License.
  */
 
+import { globSync as glob } from 'glob';
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
+import path from 'path';
 
 const layoutsPath = './src/layouts';
+const ext = '.svelte';
+
+// Get all the defined layouts
+const layout = glob(`${layoutsPath}/*${ext}`)
+	.map((filepath) => ({
+		filepath,
+		name: path.basename(filepath, ext),
+	}))
+	.reduce((result, { filepath, name }) => {
+		if (name === 'default') {
+			name = '_';
+		}
+
+		result[name] = filepath;
+
+		return result;
+	}, {});
 
 export default defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
-	layout: {
-		home: `${layoutsPath}/home.svelte`,
-		_: `${layoutsPath}/default.svelte`,
-	},
+	layout,
 });
