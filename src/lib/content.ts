@@ -41,6 +41,36 @@ export async function fetchAll() {
 	return out;
 }
 
+export async function fetchAllBlogMetadata() {
+	const list = import.meta.glob<Content>('../content/blog/*.*', {
+		eager: true,
+		import: 'metadata',
+	});
+
+	return parseReadContent(list);
+}
+
+export function parseReadContent<T extends { date?: string }>(
+	data: Record<string, T>,
+): T[] {
+	return Object.entries(data)
+		.map(([file, data]) => ({
+			slug: mdPathToSlug(file),
+			...data,
+		}))
+		.sort(dateSort);
+}
+
+export function dateSort<T extends { date?: string }>(a: T, b: T): number {
+	return Date.parse(b.date ?? '') - Date.parse(a.date ?? '');
+}
+
+export function mdPathToSlug(slug: string) {
+	return normaliseSlug(
+		([...slug.split('/')].slice(-2) ?? '').join('/').replace(/\.\w+$/, ''),
+	);
+}
+
 export async function fetchChildren(slug: string) {
 	slug = normaliseSlug(slug);
 

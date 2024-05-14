@@ -18,10 +18,12 @@ export interface Content extends MarkdownMetadata {
 	date: string;
 	excerpt?: string;
 	image: string;
+	imageSize?: 'small' | 'medium' | 'large';
 	slug: string;
 	tags: string[];
 	subtitle?: string;
 	title: string;
+	useTwitterSummaryImage?: boolean;
 }
 
 export interface MarkdownHeading {

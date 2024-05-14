@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { PUBLIC_TWITTER_USER as twitterUser } from '$env/static/public';
+
 	const startYear = 2024;
 	const currentYear = new Date().getUTCFullYear();
 
@@ -19,7 +21,7 @@
 
 			<div class="column is-half has-text-right-desktop">
 				<a
-					href="https://twitter.com/twitterUser"
+					href="https://twitter.com/{twitterUser}"
 					target="_blank"
 					class="icon has-text-white"
 				>
