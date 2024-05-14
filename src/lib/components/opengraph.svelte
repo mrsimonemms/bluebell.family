@@ -14,7 +14,7 @@
 	export let description = __DESCRIPTION__;
 	export let title = 'Untitled Page';
 	export let type: 'article' | 'website' = 'website';
-	export let image = 'img/logo.png';
+	export let image = '/img/logo.png';
 	export let norobots = false;
 	export let keywords: string[] = ['tag1', 'tag2'];
 	export let useTwitterSummaryImage = true;
