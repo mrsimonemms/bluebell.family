@@ -12,5 +12,9 @@
       ],
       "settings": {}
     }
+  },
+  "containerEnv": {
+    "PUBLIC_DOMAIN_NAME": "http://localhost:5173",
+    "PUBLIC_TWITTER_USER": "@todo"
   }
 }

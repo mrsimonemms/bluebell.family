@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import { fetch, fetchChildren } from '$lib/content';
+import { fetch, fetchAllBlogMetadata, fetchChildren } from '$lib/content';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => ({
 	content: await fetch(params.slug),
 	children: await fetchChildren(params.slug),
+	blogMetadata: await fetchAllBlogMetadata(),
 });
