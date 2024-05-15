@@ -50,10 +50,11 @@ export async function fetchAllBlogMetadata() {
 	return parseReadContent(list);
 }
 
-export function parseReadContent<T extends { date?: string }>(
-	data: Record<string, T>,
-): T[] {
+export function parseReadContent<
+	T extends { date?: string; publish?: boolean },
+>(data: Record<string, T>): T[] {
 	return Object.entries(data)
+		.filter(([, { publish }]) => publish ?? true)
 		.map(([file, data]) => ({
 			slug: mdPathToSlug(file),
 			...data,

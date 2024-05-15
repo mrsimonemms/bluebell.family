@@ -19,6 +19,7 @@ export interface Content extends MarkdownMetadata {
 	excerpt?: string;
 	image: string;
 	imageSize?: 'small' | 'medium' | 'large';
+	publish?: boolean;
 	slug: string;
 	tags: string[];
 	subtitle?: string;
