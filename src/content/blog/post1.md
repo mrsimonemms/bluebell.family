@@ -5,6 +5,7 @@ subtitle: This is a subtitle
 excerpt: This is an excerpt, which should describe the article.
 image: banner.jpg
 imageSize: null # "small", "medium" or "large"
+publish: true
 tags:
   - tag1
   - tag2
