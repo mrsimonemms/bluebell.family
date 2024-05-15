@@ -70,7 +70,7 @@ jobs:
 
       - name: Build
         env:
-          PUBLIC_DOMAIN_NAME: https://www.bluebell.family
+          PUBLIC_DOMAIN_NAME: https://bluebell.family
           PUBLIC_TWITTER_USER: "@todo"
         run: |
           npm run build
