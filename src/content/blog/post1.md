@@ -10,6 +10,11 @@ tags:
   - tag1
   - tag2
 ---
+
+<script>
+  import Map from '$lib/components/map.svelte'
+</script>
+
 This is an example post
 
 - First item
@@ -31,3 +36,6 @@ console.log(222)
 | Paragraph   | Text        |
 
 hello
+
+<Map location="Shropshire Beekeepers Association" />
+<Map height="200px" />
