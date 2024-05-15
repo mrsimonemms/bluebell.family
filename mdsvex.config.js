@@ -17,6 +17,8 @@
 import { globSync as glob } from 'glob';
 import { defineMDSveXConfig as defineConfig } from 'mdsvex';
 import path from 'path';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 
 const layoutsPath = './src/layouts';
 const ext = '.svelte';
@@ -40,4 +42,28 @@ const layout = glob(`${layoutsPath}/*${ext}`)
 export default defineConfig({
 	extensions: ['.svelte.md', '.md', '.svx'],
 	layout,
+	rehypePlugins: [
+		rehypeSlug,
+		[
+			rehypeAutolinkHeadings,
+			{
+				behavior: 'append',
+				content: {
+					type: 'element',
+					tagName: 'span',
+					properties: { className: ['icon'] },
+					children: [
+						{
+							type: 'element',
+							tagName: 'span',
+							properties: {
+								className: ['mdi', 'mdi-link-variant', 'mdi-18px'],
+							},
+						},
+					],
+				},
+				properties: { className: ['has-text-grey-light'] },
+			},
+		],
+	],
 });

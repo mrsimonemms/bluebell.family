@@ -37,5 +37,7 @@ console.log(222)
 
 hello
 
+## Some maps
+
 <Map location="Shropshire Beekeepers Association" />
 <Map height="200px" />
