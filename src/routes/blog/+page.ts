@@ -17,6 +17,6 @@
 import { fetchAllBlogMetadata } from '$lib/content';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = () => ({
-	posts: fetchAllBlogMetadata(),
+export const load: PageLoad = async () => ({
+	posts: await fetchAllBlogMetadata(),
 });
