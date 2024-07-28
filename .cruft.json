@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/mrsimonemms/new",
+  "commit": "371594f7d7aa597f23c6273b27a6b233abedb47c",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "bluebell.family",
+      "description": "Bluebell Family History",
+      "author": "Simon Emms <simon@simonemms.com>",
+      "type": "blank",
+      "_template": "https://github.com/mrsimonemms/new"
+    }
+  },
+  "directory": "js",
+  "skip": [
+    ".git"
+  ]
+}
